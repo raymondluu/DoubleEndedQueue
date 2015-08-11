@@ -1,0 +1,247 @@
+/*
+ * TCSS 342 Winter 2013
+ * Assignment 2
+ */
+
+package sort;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
+import util.ListOutputRestrictedDoubleEndedQueue;
+
+/**
+ * Radix Sort class.
+ * 
+ * @author Raymond Luu
+ * @version Winter 2013
+ *
+ */
+public final class RadixSort
+{
+  
+  /**
+   * Constant used to find ones place when modded by it.
+   */
+  public static final int ONES_PLACE = 10;
+  
+  /**
+   * Constant for Digit 0.
+   */
+  public static final int DIGIT_ZERO = 0;
+  
+  /**
+   * Constant for Digit 1.
+   */
+  public static final int DIGIT_ONE = 1;
+  
+  /**
+   * Constant for Digit 2.
+   */
+  public static final int DIGIT_TWO = 2;
+  
+  /**
+   * Constant for Digit 3.
+   */
+  public static final int DIGIT_THREE = 3;
+  
+  /**
+   * Constant for Digit 4.
+   */
+  public static final int DIGIT_FOUR = 4;
+  
+  /**
+   * Constant for Digit 5.
+   */
+  public static final int DIGIT_FIVE = 5;
+  
+  /**
+   * Constant for Digit 6.
+   */
+  public static final int DIGIT_SIX = 6;
+  
+  /**
+   * Constant for Digit 7.
+   */
+  public static final int DIGIT_SEVEN = 7;
+  
+  /**
+   * Constant for Digit 8.
+   */
+  public static final int DIGIT_EIGHT = 8;
+  
+  /**
+   * Constant for Digit 9.
+   */
+  public static final int DIGIT_NINE = 9;
+  
+  /**
+   * Master queue to hold all the inputs.
+   */
+  private static ListOutputRestrictedDoubleEndedQueue<Integer> my_master_queue =
+                                          new ListOutputRestrictedDoubleEndedQueue<Integer>();
+  
+  /**
+   * Digit 0 queue.
+   */
+  private static ListOutputRestrictedDoubleEndedQueue<Integer> my_digit0_queue =
+                                          new ListOutputRestrictedDoubleEndedQueue<Integer>();
+  
+  /**
+   * Digit 1 queue.
+   */
+  private static ListOutputRestrictedDoubleEndedQueue<Integer> my_digit1_queue =
+                                          new ListOutputRestrictedDoubleEndedQueue<Integer>();
+  
+  /**
+   * Digit 2 queue.
+   */
+  private static ListOutputRestrictedDoubleEndedQueue<Integer> my_digit2_queue =
+                                          new ListOutputRestrictedDoubleEndedQueue<Integer>();
+  
+  /**
+   * Digit 3 queue.
+   */
+  private static ListOutputRestrictedDoubleEndedQueue<Integer> my_digit3_queue =
+                                          new ListOutputRestrictedDoubleEndedQueue<Integer>();
+  
+  /**
+   * Digit 4 queue.
+   */
+  private static ListOutputRestrictedDoubleEndedQueue<Integer> my_digit4_queue =
+                                          new ListOutputRestrictedDoubleEndedQueue<Integer>();
+  
+  /**
+   * Digit 5 queue.
+   */
+  private static ListOutputRestrictedDoubleEndedQueue<Integer> my_digit5_queue =
+                                          new ListOutputRestrictedDoubleEndedQueue<Integer>();
+  
+  /**
+   * Digit 6 queue.
+   */
+  private static ListOutputRestrictedDoubleEndedQueue<Integer> my_digit6_queue =
+                                          new ListOutputRestrictedDoubleEndedQueue<Integer>();
+  
+  /**
+   * Digit 7 queue.
+   */
+  private static ListOutputRestrictedDoubleEndedQueue<Integer> my_digit7_queue =
+                                          new ListOutputRestrictedDoubleEndedQueue<Integer>();
+  
+  /**
+   * Digit 8 queue.
+   */
+  private static ListOutputRestrictedDoubleEndedQueue<Integer> my_digit8_queue =
+                                          new ListOutputRestrictedDoubleEndedQueue<Integer>();
+  
+  /**
+   * Digit 9 queue.
+   */
+  private static ListOutputRestrictedDoubleEndedQueue<Integer> my_digit9_queue =
+                                          new ListOutputRestrictedDoubleEndedQueue<Integer>();
+  
+  /**
+   * Private Radix Sort constructor.
+   */
+  private RadixSort()
+  {
+    // empty private constructor
+  }
+  
+  /**
+   * Scans file for inputs and places into Queue.
+   * 
+   * @throws FileNotFoundException
+   */
+  public static void scanInput() throws FileNotFoundException
+  {
+    final File file_name = new File("in.txt");
+    
+    final Scanner input = new Scanner(file_name);
+    
+    while (input.hasNext())
+    {
+      my_master_queue.enqueue(input.nextInt());
+    }
+    
+    input.close();
+  }
+  
+  /**
+   * Main method.
+   * 
+   * @param the_args the argument.
+   * @throws FileNotFoundException 
+   */
+  public static void main(final String[] the_args) throws FileNotFoundException
+  {
+    scanInput();
+    
+    int current = 0;
+    int remainder = 0;
+    
+    // ones place digit
+    while (!my_master_queue.isEmpty())
+    {
+      current = my_master_queue.dequeue();
+      
+      remainder = current % ONES_PLACE;
+      
+      if (remainder == 0)
+      {
+        my_digit0_queue.enqueue(current);
+      }
+      else if (remainder == 1)
+      {
+        my_digit1_queue.enqueue(current);
+      }
+      else if (remainder == 2)
+      {
+        my_digit2_queue.enqueue(current);
+      }
+//      else if (remainder == 3)
+//      {
+//        my_digit3_queue.enqueue(current);
+//      }
+//      else if (remainder == 3)
+//      {
+//        my_digit3_queue.enqueue(current);
+//      }
+//      else if (remainder == 3)
+//      {
+//        my_digit3_queue.enqueue(current);
+//      }
+//      else if (remainder == 3)
+//      {
+//        my_digit3_queue.enqueue(current);
+//      }
+//      else if (remainder == 3)
+//      {
+//        my_digit3_queue.enqueue(current);
+//      }
+//      else if (remainder == 3)
+//      {
+//        my_digit3_queue.enqueue(current);
+//      }
+//      else if (remainder == 3)
+//      {
+//        my_digit3_queue.enqueue(current);
+//      }
+      
+    }
+    
+    while (!my_digit1_queue.isEmpty())
+    {
+      System.out.println(my_digit1_queue.dequeue());
+    }
+    
+//    int test = 66;
+//    int test2 = 10;
+//    int output = 0;
+//    output = test /test2;
+//    System.out.println(output);
+  }
+
+}
